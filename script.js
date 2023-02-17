@@ -4,21 +4,21 @@ const app = new Vue({
         products: [
             {
                 name: "Erigolim Jean-Tote",
-                image: "/assets/1.jpg",
+                image: "assets/1.jpg",
                 stock: 23,
                 color: "Noir",
                 quantity: 1,
             },
             {
                 name: "Erigolim Destroyed",
-                image: "/assets/2.jpg",
+                image: "assets/2.jpg",
                 stock: 12,
                 color: "Gris",
                 quantity: 2,
             },
             {
                 name: "Prayoon Carrelet",
-                image: "/assets/3.jpg",
+                image: "assets/3.jpg",
                 stock: 25,
                 color: "Gris",
                 quantity: 1,
@@ -35,4 +35,9 @@ const app = new Vue({
             product.quantity++;
         },
     },
+    computed: {
+        currentYear() {
+        return new Date().getFullYear();
+        }
+    }
 });

@@ -5,6 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Shopping Cart</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
         <div id="app">
@@ -25,78 +32,75 @@
                         />
                     </svg>
                 </p>
-                <p class="brand">vik<span class="yellow">tor</span></p>
-                <img src="/assets/user.jpg" alt="Utilisateur" />
+                <a href="#" class="brand">vik<span class="yellow">tor</span></a>
+                <img
+                    src="assets/user.jpg"
+                    alt="Utilisateur"
+                    class="nav-image"
+                />
             </nav>
             <a href="#" class="breadcrumb">Accueil / Panier</a>
-            <h1 class="title">Panier</h1>
+            <h1 class="title">Mon Panier</h1>
             <section class="basket">
                 <div class="table">
-                    <table>
-                        <tr class="table-header">
-                            <th>Produit</th>
-                            <th>Couleur</th>
-                            <th>Quantité</th>
-                        </tr>
-                        <tr v-for="product in products">
-                            <th class="product">
-                                <img
-                                    :src="product.image"
-                                    :alt="product.image"
-                                    class="product-image"
-                                />
-                                <div class="product-infos">
-                                    <h3 class="product-title">
-                                        {{ product.name }}
-                                    </h3>
-                                    <p class="product-stock">
-                                        Stocks restants {{ product.stock }}
-                                    </p>
-                                </div>
-                            </th>
-                            <th class="product-color">{{ product.color }}</th>
-                            <th class="quantity">
-                                <button @click="decrementQuantity(product)" class="icon"
-                                    ><svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="1.5"
-                                        stroke="currentColor"
-                                        class="w-6 h-6"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                                        />
-                                    </svg>
-                                </button>
-                                <p>{{ product.quantity }}</p>
-                                <button @click="incrementQuantity(product)" class="icon">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="1.5"
-                                        stroke="currentColor"
-                                        class="w-6 h-6"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                                        />
-                                    </svg>
-                                </button>
-                            </th>
-                    </table>
+                    <div class="table-header">
+                        <div class="t1">Produit</div>
+                        <div class="t2">Couleur</div>
+                        <div class="t3">Quantité</div>
+                    </div>
+                    <div v-for="product in products" class="table-row">
+                        <div class="product">
+                            <img
+                                :src="product.image"
+                                :alt="product.image"
+                                class="product-image"
+                            />
+                            <div class="product-infos">
+                                <p class="product-title">{{ product.name }}</p>
+                                <p class="product-stock">
+                                    Stocks restants {{ product.stock }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="product-color">{{ product.color }}</div>
+                        <div class="quantity">
+                            <i @click="decrementQuantity(product)" class="icon"
+                                ><svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    class="w-6 h-6"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                            </i>
+                            <p>{{ product.quantity }}</p>
+                            <i @click="incrementQuantity(product)" class="icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    class="w-6 h-6"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                            </i>
+                        </div>
+                    </div>
                 </div>
                 <div class="shop-cart">
                     <div class="cart">
                         <header class="cart-header">
                             <p>Total</p>
-                            <p>45.000 fcfa</p>
+                            <p>45.000 <small>fcfa</small></p>
                         </header>
                         <div class="cart-body">
                             <div class="row">
@@ -105,23 +109,25 @@
                             </div>
                             <div class="row">
                                 <p>Réduction</p>
-                                <p>2500fcfa</p>
+                                <p>2500 <small>fcfa</small></p>
                             </div>
                             <div class="row">
                                 <p>Frais d'expédition</p>
                                 <p>Gratuit</p>
                             </div>
-                            <button class="cart-btn">Payer</button>
                         </div>
+                        <button class="cart-btn">Payer</button>
                     </div>
                     <div class="cart-footer">
-                        <img src="/assets/payements.png" alt="" />
+                        <img src="assets/payements.png" alt="" />
                     </div>
                 </div>
             </section>
-            <footer>Copyright © 2023 Brice. Tous drois réservés</footer>
+            <footer>
+                Copyright © {{ currentYear }} Brice. Tous drois réservés
+            </footer>
         </div>
     </body>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="/script.js"></script>
+    <script src="vue.min.js"></script>
+    <script src="script.js"></script>
 </html>
